@@ -17,7 +17,7 @@ def inicializa():
 
     # dicionario com todos os itens assets
     assets = {
-    "tela_de_play" : pygame.image.load("image/TELA PLAY TRON.png"),
+    "tela_de_play" : pygame.image.load("image/TELA_PLAY_TRON.png"),
     "titulo" : 'TRON LEGACY' ,
     }
 
