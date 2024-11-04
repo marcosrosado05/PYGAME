@@ -79,29 +79,6 @@ def desenha(window, state, assets):
     pygame.display.flip() #ATUALIZANDO FRAME
     update_state(state)
 
-
-def movimentacao(state):
-    for event in pygame.event.get():
-        if state['tela_atual'] == TELA_DE_PLAY:
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    velocidade_x_p1= -velocidade
-                if event.key == pygame.K_RIGHT:
-                    velocidade_x_p1= velocidade
-                if event.key == pygame.K_UP:
-                    velocidade_y_p1= -velocidade
-                if event.key == pygame.K_DOWN:
-                    velocidade_y_p1= velocidade
-                if event.key == pygame.K_a:
-                    velocidade_x_p2= -velocidade
-                if event.key == pygame.K_d:
-                    velocidade_x_p2= velocidade
-                if event.key == pygame.K_w:
-                    velocidade_y_p2= -velocidade
-                if event.key == pygame.K_s:
-                    velocidade_y_p2= velocidade
-
-
 def desenha_p1(window,assets, posicao_inicial_x_p1, posicao_inicial_y_p1):
     
     moto_P1= assets['Moto_P1']
@@ -118,9 +95,27 @@ def desenha_p2(window, assets, posicao_inicial_x_p2, posicao_inicial_y_p2):
     # Desenha a imagem na tela
     window.blit(moto_P2, moto_P2_rect)
 
+#função pra mover a moto do P1
+def move_moto_P1(posicao_atual_x_P1, posicao_atual_y_P1, direcao_p1, WIDTH, HEIGHT, window, state):
+    posicao_atual_x_P1 += direcao_p1[0]
+    posicao_atual_y_P1 += direcao_p1[1]
 
-def desenha_sprite(tela, imagem, x, y):
-    # Obtenha o retângulo da imagem para definir a posição
-    sprite_rect = imagem.get_rect(topleft=(x, y))
-    # Desenha a imagem na tela
-    tela.blit(imagem, sprite_rect)
+    # Verifique se a sprite bateu na borda da tela
+    if posicao_atual_x_P1 < 0 or posicao_atual_x_P1 > WIDTH or posicao_atual_y_P1 < 0 or posicao_atual_y_P1 > HEIGHT:
+        state["estado"]= False  # Retorna False se bater na borda e acaba o jogo
+        return 
+    else:
+        return [posicao_atual_x_P1, posicao_atual_y_P1]
+    
+
+#função pra mover a moto do P2
+def move_moto_P2(posicao_atual_x_P2, posicao_atual_y_P2, direcao_p2, WIDTH, HEIGHT, window, state):
+    posicao_atual_x_P2 += direcao_p2[0]
+    posicao_atual_y_P2 += direcao_p2[1]
+
+    # Verifique se a sprite bateu na borda da tela
+    if posicao_atual_x_P2 < 0 or posicao_atual_x_P2 > WIDTH or posicao_atual_y_P2 < 0 or posicao_atual_y_P2 > HEIGHT:
+        state["estado"]= False  # Retorna False se bater na borda e acaba o jogo
+        return
+    else:
+        return [posicao_atual_x_P2, posicao_atual_y_P2]
