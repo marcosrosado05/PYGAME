@@ -19,6 +19,9 @@ def inicializa():
     assets = {
     "tela_de_play" : pygame.image.load("image/TELA_PLAY_TRON.png"),
     "titulo" : 'TRON LEGACY' ,
+    "logo_titulo" : pygame.image.load("image/logo_nome.png") ,
+    "tabuleiro1": pygame.image.load("image/tabuleiro1.png"),
+    "tabuleiro2": pygame.image.load("image/tabuleiro2.png"),
     }
 
     # Imprime instruções
@@ -65,6 +68,8 @@ def desenha(window, state, assets):
     #DESENHANDO TELA DE PLAY
     if state['tela_atual'] == TELA_DE_PLAY:
         window.fill(BLACK)
+        window.blit(assets['tabuleiro1'], (WIDTH/2 - assets['tabuleiro1'].get_width()/2,0))
+
     pygame.display.flip() #ATUALIZANDO FRAME
 
 
