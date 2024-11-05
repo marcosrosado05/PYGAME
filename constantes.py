@@ -25,12 +25,12 @@ TELA_INICIAL = 0
 TELA_DE_PLAY = 1
 
 #JOGADORES
-posicao_inicial_x_p1=650
-posicao_inicial_y_p1=250
-posicao_inicial_x_p2=1230  
-posicao_inicial_y_p2=830 
+posicao_inicial_x_p1=800
+posicao_inicial_y_p1=400
+posicao_inicial_x_p2=1000  
+posicao_inicial_y_p2=800 
 
 velocidade_motos= 1
 
-MOTO_WIDTH = 350
-MOTO_HEIGHT = 200
+MOTO_WIDTH = 135
+MOTO_HEIGHT = 75

@@ -4,8 +4,8 @@ from funcoes import *
 
 
 window, state, assets = inicializa()
-direcao_p1= (0, -velocidade_motos)
-direcao_p2= (velocidade_motos, 0)
+direcao_p1= (0, velocidade_motos)
+direcao_p2= (0, -velocidade_motos)
 
 pos_p1 = [posicao_inicial_x_p1, posicao_inicial_y_p1]
 pos_p2 = [posicao_inicial_x_p2, posicao_inicial_y_p2]

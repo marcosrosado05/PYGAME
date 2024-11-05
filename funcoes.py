@@ -22,8 +22,8 @@ def inicializa():
         "logo_titulo" : pygame.image.load("image/logo_nome.png"),
         "tabuleiro1": pygame.image.load("image/tabuleiro1.png"),
         "tabuleiro2": pygame.image.load("image/tabuleiro2.png"),
-        "Moto_P1": pygame.image.load("image/Moto_P1.png"),
-        "Moto_P2": pygame.image.load("image/Moto_P2.png")
+        "Moto_P1": pygame.image.load("image/moto-azul.png"),
+        "Moto_P2": pygame.image.load("image/moto-laranja.png")
     }
 
     # Imprime instruções
