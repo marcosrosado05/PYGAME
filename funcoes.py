@@ -47,11 +47,11 @@ assets = {
 
 moto_P1= assets['Moto_P1']
 moto_P1 = pygame.transform.scale(moto_P1, (MOTO_WIDTH, MOTO_HEIGHT))
-moto_P1_rect= moto_P1.get_rect(topleft=(posicao_inicial_x_p1, posicao_inicial_y_p1))
+moto_P1_rect= moto_P1.get_rect(topleft=(posicao_inicial_x_P1, posicao_inicial_y_P1))
 
 moto_P2=  assets['Moto_P2']
 moto_P2 = pygame.transform.scale(moto_P2, (MOTO_WIDTH, MOTO_HEIGHT))
-moto_P2_rect= moto_P2.get_rect(topleft=(posicao_inicial_x_p2, posicao_inicial_y_p2))
+moto_P2_rect= moto_P2.get_rect(topleft=(posicao_inicial_x_P2, posicao_inicial_y_P2))
 def update_state(state):
 
     #TRATAMENTO DE EVENTOS
@@ -187,6 +187,13 @@ def gira_moto_P2(direcao_p2, moto_P2, posicao_atual_P2):
     moto_atual_P2_rect = moto_atual_P2.get_rect(center=posicao_atual_P2)
 
     return moto_atual_P2, moto_atual_P2_rect
+
+
+# ve se as duas motos se batem, se baterem, as duas voltam pra posição inicial
+def checa_colisao_das_motos(moto_atual_P1_rect, moto_atual_P2_rect, posicao_inicial_P1, posicao_inicial_P2):
+    if moto_atual_P1_rect.colliderect(moto_atual_P2_rect):
+        moto_atual_P1_rect.center = posicao_inicial_P1
+        moto_atual_P2_rect.center = posicao_inicial_P2
 
 
 pygame.quit()

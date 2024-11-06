@@ -7,8 +7,8 @@ window, state, assets = inicializa()
 direcao_p1= (0, velocidade_motos)
 direcao_p2= (0, -velocidade_motos)
 
-posicao_atual_P1 = [posicao_inicial_x_p1, posicao_inicial_y_p1]
-posicao_atual_P2 = [posicao_inicial_x_p2, posicao_inicial_y_p2]
+posicao_atual_P1 = [posicao_inicial_x_P1, posicao_inicial_y_P1]
+posicao_atual_P2 = [posicao_inicial_x_P2, posicao_inicial_y_P2]
 
 
 while state["estado"]:
@@ -51,6 +51,8 @@ while state["estado"]:
         posicao_atual_P1 = posicao_atual_P1_2
         posicao_atual_P2_2= move_moto_P2 (posicao_atual_P2[0], posicao_atual_P2[1], direcao_p2, WIDTH, HEIGHT, window, state)
         posicao_atual_P2 = posicao_atual_P2_2
+
+        #checa_colisao_das_motos(moto_atual_P1_rect, moto_atual_P2_rect, posicao_inicial_P1, posicao_inicial_P2)
         
 
     # Atualiza a tela

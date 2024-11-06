@@ -18,12 +18,12 @@ TELA_INICIAL = 0
 TELA_DE_PLAY = 1
 
 #JOGADORES
-posicao_inicial_x_p1=800
-posicao_inicial_y_p1=400
-posicao_inicial_x_p2=1000  
-posicao_inicial_y_p2=800 
-posicao_inicial_p1= [posicao_inicial_x_p1, posicao_inicial_y_p1]
-posicao_inicial_p2= [posicao_inicial_x_p2, posicao_inicial_y_p2]
+posicao_inicial_x_P1=800
+posicao_inicial_y_P1=400
+posicao_inicial_x_P2=1000  
+posicao_inicial_y_P2=800 
+posicao_inicial_P1= [posicao_inicial_x_P1, posicao_inicial_y_P1]
+posicao_inicial_P2= [posicao_inicial_x_P2, posicao_inicial_y_P2]
 
 velocidade_motos= 1.8
 
