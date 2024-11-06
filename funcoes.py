@@ -2,6 +2,7 @@ import pygame
 from constantes import *
 
 
+
 # INICIA O JOGO
 
 def inicializa():
@@ -34,7 +35,23 @@ def inicializa():
 
     return window, state, assets
 
+assets = {
+    "tela_de_play" : pygame.image.load("image/TELA_PLAY_TRON.png"),
+    "titulo" : 'TRON LEGACY' ,
+    "logo_titulo" : pygame.image.load("image/logo.png"),
+    "tabuleiro1": pygame.image.load("image/tabuleiro1.png"),
+    "tabuleiro2": pygame.image.load("image/tabuleiro2.png"),
+    "Moto_P1": pygame.image.load("image/moto-azul.png"),
+    "Moto_P2": pygame.image.load("image/moto-laranja.png")
+}
 
+moto_P1= assets['Moto_P1']
+moto_P1 = pygame.transform.scale(moto_P1, (MOTO_WIDTH, MOTO_HEIGHT))
+moto_P1_rect= moto_P1.get_rect(topleft=(posicao_inicial_x_p1, posicao_inicial_y_p1))
+
+moto_P2=  assets['Moto_P2']
+moto_P2 = pygame.transform.scale(moto_P2, (MOTO_WIDTH, MOTO_HEIGHT))
+moto_P2_rect= moto_P2.get_rect(topleft=(posicao_inicial_x_p2, posicao_inicial_y_p2))
 def update_state(state):
 
     #TRATAMENTO DE EVENTOS
@@ -80,21 +97,21 @@ def desenha(window, state, assets):
     # pygame.display.flip() #ATUALIZANDO FRAME
     
 
-def desenha_p1(window,assets, posicao_inicial_x_p1, posicao_inicial_y_p1):
+def desenha_p1(window,assets, posicao_inicial_x_p1, posicao_inicial_y_p1, moto_atual_P1):
     
     moto_P1= assets['Moto_P1']
     moto_P1 = pygame.transform.scale(moto_P1, (MOTO_WIDTH, MOTO_HEIGHT))
     moto_P1_rect= moto_P1.get_rect(topleft=(posicao_inicial_x_p1, posicao_inicial_y_p1))
     # Desenha a imagem na tela
-    window.blit(moto_P1, moto_P1_rect)
+    window.blit(moto_atual_P1, moto_P1_rect)
 
-def desenha_p2(window, assets, posicao_inicial_x_p2, posicao_inicial_y_p2):
+def desenha_p2(window, assets, posicao_inicial_x_p2, posicao_inicial_y_p2, moto_atual_P2):
     
     moto_P2=  assets['Moto_P2']
     moto_P2 = pygame.transform.scale(moto_P2, (MOTO_WIDTH, MOTO_HEIGHT))
     moto_P2_rect= moto_P2.get_rect(topleft=(posicao_inicial_x_p2, posicao_inicial_y_p2))
     # Desenha a imagem na tela
-    window.blit(moto_P2, moto_P2_rect)
+    window.blit(moto_atual_P2, moto_P2_rect)
 
 #função pra mover a moto do P1
 def move_moto_P1(posicao_atual_x_P1, posicao_atual_y_P1, direcao_p1, WIDTH, HEIGHT, window, state):
@@ -120,3 +137,35 @@ def move_moto_P2(posicao_atual_x_P2, posicao_atual_y_P2, direcao_p2, WIDTH, HEIG
         return
     else:
         return [posicao_atual_x_P2, posicao_atual_y_P2]
+    
+#função para girar a moto do P1
+def gira_moto_P1(direcao_p1, moto_P1):
+    moto_P1_baixo= pygame.transform.rotate(moto_P1, 90)
+    moto_P1_cima= pygame.transform.rotate(moto_P1, -90)
+    moto_P1_esquerda= pygame.transform.rotate(moto_P1, 0)
+    moto_P1_direita= pygame.transform.rotate(moto_P1, 180)
+    if direcao_p1 == (0, velocidade_motos):
+        moto_atual_P1= moto_P1_baixo
+    elif direcao_p1 == (0, -velocidade_motos):
+        moto_atual_P1= moto_P1_cima
+    elif direcao_p1 == (velocidade_motos, 0):
+        moto_atual_P1= moto_P1_direita
+    elif direcao_p1 == (-velocidade_motos, 0):
+        moto_atual_P1= moto_P1_esquerda
+    return moto_atual_P1
+
+#função para girar a moto do P2
+def gira_moto_P2(direcao_p2, moto_P2):
+    moto_P2_baixo= pygame.transform.rotate(moto_P2, 90)
+    moto_P2_cima= pygame.transform.rotate(moto_P2, -90)
+    moto_P2_esquerda= pygame.transform.rotate(moto_P2, 0)
+    moto_P2_direita= pygame.transform.rotate(moto_P2, 180)
+    if direcao_p2 == (0, velocidade_motos):
+        moto_atual_P2= moto_P2_baixo
+    elif direcao_p2 == (0, -velocidade_motos):
+        moto_atual_P2= moto_P2_cima
+    elif direcao_p2 == (velocidade_motos, 0):
+        moto_atual_P2= moto_P2_direita
+    elif direcao_p2 == (-velocidade_motos, 0):
+        moto_atual_P2= moto_P2_esquerda
+    return moto_atual_P2
