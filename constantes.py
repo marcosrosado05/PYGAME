@@ -22,8 +22,11 @@ posicao_inicial_x_p1=800
 posicao_inicial_y_p1=400
 posicao_inicial_x_p2=1000  
 posicao_inicial_y_p2=800 
+posicao_inicial_p1= [posicao_inicial_x_p1, posicao_inicial_y_p1]
+posicao_inicial_p2= [posicao_inicial_x_p2, posicao_inicial_y_p2]
 
 velocidade_motos= 1.8
 
 MOTO_WIDTH = 135
 MOTO_HEIGHT = 75
+

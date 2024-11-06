@@ -7,8 +7,8 @@ window, state, assets = inicializa()
 direcao_p1= (0, velocidade_motos)
 direcao_p2= (0, -velocidade_motos)
 
-pos_p1 = [posicao_inicial_x_p1, posicao_inicial_y_p1]
-pos_p2 = [posicao_inicial_x_p2, posicao_inicial_y_p2]
+posicao_atual_P1 = [posicao_inicial_x_p1, posicao_inicial_y_p1]
+posicao_atual_P2 = [posicao_inicial_x_p2, posicao_inicial_y_p2]
 
 
 while state["estado"]:
@@ -17,11 +17,11 @@ while state["estado"]:
 
     if state['tela_atual'] == TELA_DE_PLAY:
 
-        moto_atual_P1= gira_moto_P1 (direcao_p1, moto_P1)
-        moto_atual_P2= gira_moto_P2 (direcao_p2, moto_P2)
+        moto_atual_P1= gira_moto_P1 (direcao_p1, moto_P1, posicao_atual_P1)
+        moto_atual_P2= gira_moto_P2 (direcao_p2, moto_P2, posicao_atual_P2)
 
-        desenha_p1 (window, assets, pos_p1[0], pos_p1[1], moto_atual_P1)
-        desenha_p2 (window, assets, pos_p2[0], pos_p2[1], moto_atual_P2)
+        desenha_p1 (window, assets, posicao_atual_P1[0], posicao_atual_P1[1], moto_atual_P1)
+        desenha_p2 (window, assets, posicao_atual_P2[0], posicao_atual_P2[1], moto_atual_P2)
 
         # Verifique quais teclas estão pressionadas para alterar a direção do P1
         keys = pygame.key.get_pressed()
@@ -47,14 +47,12 @@ while state["estado"]:
 
         # Chame a função para mover as duas motos e verificar se está dentro do tabuleiro
         print(direcao_p1)
-        pos_p1_2= move_moto_P1 (pos_p1[0], pos_p1[1], direcao_p1, WIDTH, HEIGHT, window, state)
-        pos_p1 = pos_p1_2
-        pos_p2_2= move_moto_P2 (pos_p2[0], pos_p2[1], direcao_p2, WIDTH, HEIGHT, window, state)
-        pos_p2 = pos_p2_2
+        posicao_atual_P1_2= move_moto_P1 (posicao_atual_P1[0], posicao_atual_P1[1], direcao_p1, WIDTH, HEIGHT, window, state)
+        posicao_atual_P1 = posicao_atual_P1_2
+        posicao_atual_P2_2= move_moto_P2 (posicao_atual_P2[0], posicao_atual_P2[1], direcao_p2, WIDTH, HEIGHT, window, state)
+        posicao_atual_P2 = posicao_atual_P2_2
+        
 
     # Atualiza a tela
     pygame.display.update()
     
-
-pygame.quit()
-
