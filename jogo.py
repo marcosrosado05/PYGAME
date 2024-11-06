@@ -17,8 +17,8 @@ while state["estado"]:
 
     if state['tela_atual'] == TELA_DE_PLAY:
 
-        moto_atual_P1= gira_moto_P1 (direcao_p1, moto_P1, posicao_atual_P1)
-        moto_atual_P2= gira_moto_P2 (direcao_p2, moto_P2, posicao_atual_P2)
+        moto_atual_P1, moto_atual_P1_rect = gira_moto_P1(direcao_p1, moto_P1, posicao_atual_P1)
+        moto_atual_P2, moto_atual_P2_rect = gira_moto_P2(direcao_p2, moto_P2, posicao_atual_P2)
 
         desenha_p1 (window, assets, posicao_atual_P1[0], posicao_atual_P1[1], moto_atual_P1)
         desenha_p2 (window, assets, posicao_atual_P2[0], posicao_atual_P2[1], moto_atual_P2)
