@@ -9,7 +9,7 @@ def inicializa():
 
     # DIMENSIONA A TELA
     window = pygame.display.set_mode((WIDTH, HEIGHT)) 
-    pygame.init()
+
     pygame.display.set_caption("TRON LEGACY")
 
     #DICIONARIO DE STATE DO JOGO
@@ -19,7 +19,7 @@ def inicializa():
     assets = {
         "tela_de_play" : pygame.image.load("image/TELA_PLAY_TRON.png"),
         "titulo" : 'TRON LEGACY' ,
-        "logo_titulo" : pygame.image.load("image/logo_nome.png"),
+        "logo_titulo" : pygame.image.load("image/logo.png"),
         "tabuleiro1": pygame.image.load("image/tabuleiro1.png"),
         "tabuleiro2": pygame.image.load("image/tabuleiro2.png"),
         "Moto_P1": pygame.image.load("image/moto-azul.png"),
@@ -70,14 +70,15 @@ def desenha(window, state, assets):
     if state['tela_atual'] == TELA_INICIAL:
         window.fill(BLACK)
         window.blit(assets['tela_de_play'], (WIDTH/2 - assets['tela_de_play'].get_width()/2,0))
+        window.blit(assets['logo_titulo'], (WIDTH/2 - assets['logo_titulo'].get_width()/2,HEIGHT/3 - 100))
 
     #DESENHANDO TELA DE PLAY
     if state['tela_atual'] == TELA_DE_PLAY:
         window.fill(BLACK)
         window.blit(assets['tabuleiro1'], (WIDTH / 2 - assets['tabuleiro1'].get_width() / 2, HEIGHT / 2 - assets['tabuleiro1'].get_height() / 2))
 
-    pygame.display.flip() #ATUALIZANDO FRAME
-    update_state(state)
+    # pygame.display.flip() #ATUALIZANDO FRAME
+    
 
 def desenha_p1(window,assets, posicao_inicial_x_p1, posicao_inicial_y_p1):
     

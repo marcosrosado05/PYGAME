@@ -12,12 +12,12 @@ pos_p2 = [posicao_inicial_x_p2, posicao_inicial_y_p2]
 
 while state["estado"]:
     desenha(window, state, assets)
+    update_state(state)
 
     if state['tela_atual'] == TELA_DE_PLAY:
         desenha_p1 (window, assets, pos_p1[0], pos_p1[1])
-    if state['tela_atual'] == TELA_DE_PLAY:
+
         desenha_p2 (window, assets, pos_p2[0], pos_p2[1])
-    if state['tela_atual'] == TELA_DE_PLAY:
         # Verifique quais teclas estão pressionadas para alterar a direção do P1
         keys = pygame.key.get_pressed()
         if keys[pygame.K_a]:   # Esquerda
@@ -47,8 +47,8 @@ while state["estado"]:
         pos_p2_2= move_moto_P2 (pos_p2[0], pos_p2[1], direcao_p2, WIDTH, HEIGHT, window, state)
         pos_p2 = pos_p2_2
 
-        # Atualiza a tela
-        pygame.display.flip()
+    # Atualiza a tela
+    pygame.display.update()
     
 
 pygame.quit()

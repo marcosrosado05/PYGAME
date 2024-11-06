@@ -1,11 +1,4 @@
 # IMPORTS
-
-import pygame
-import random 
-from os import path
-
-
-
 # INFORMAÇÕES DA TELA 
 WIDTH, HEIGHT = 1920,1080
 
@@ -30,7 +23,7 @@ posicao_inicial_y_p1=400
 posicao_inicial_x_p2=1000  
 posicao_inicial_y_p2=800 
 
-velocidade_motos= 1
+velocidade_motos= 1.8
 
 MOTO_WIDTH = 135
 MOTO_HEIGHT = 75
