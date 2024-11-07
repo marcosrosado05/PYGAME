@@ -188,12 +188,4 @@ def gira_moto_P2(direcao_p2, moto_P2, posicao_atual_P2):
 
     return moto_atual_P2, moto_atual_P2_rect
 
-
-# ve se as duas motos se batem, se baterem, as duas voltam pra posição inicial
-def checa_colisao_das_motos(moto_atual_P1_rect, moto_atual_P2_rect, posicao_inicial_P1, posicao_inicial_P2):
-    if moto_atual_P1_rect.colliderect(moto_atual_P2_rect):
-        moto_atual_P1_rect.center = posicao_inicial_P1
-        moto_atual_P2_rect.center = posicao_inicial_P2
-
-
 pygame.quit()

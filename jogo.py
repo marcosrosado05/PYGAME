@@ -10,6 +10,8 @@ direcao_p2= (0, -velocidade_motos)
 posicao_atual_P1 = [posicao_inicial_x_P1, posicao_inicial_y_P1]
 posicao_atual_P2 = [posicao_inicial_x_P2, posicao_inicial_y_P2]
 
+moto_P1_baixo = pygame.transform.rotate(moto_P1, 90)
+moto_P2_cima = pygame.transform.rotate(moto_P2, -90)
 
 while state["estado"]:
     desenha(window, state, assets)
@@ -46,13 +48,22 @@ while state["estado"]:
             direcao_p2 = (0, velocidade_motos)
 
         # Chame a função para mover as duas motos e verificar se está dentro do tabuleiro
-        print(direcao_p1)
         posicao_atual_P1_2= move_moto_P1 (posicao_atual_P1[0], posicao_atual_P1[1], direcao_p1, WIDTH, HEIGHT, window, state)
         posicao_atual_P1 = posicao_atual_P1_2
         posicao_atual_P2_2= move_moto_P2 (posicao_atual_P2[0], posicao_atual_P2[1], direcao_p2, WIDTH, HEIGHT, window, state)
         posicao_atual_P2 = posicao_atual_P2_2
 
-        #checa_colisao_das_motos(moto_atual_P1_rect, moto_atual_P2_rect, posicao_inicial_P1, posicao_inicial_P2)
+        # Verifique se as motos bateram uma na outra
+        bate_motos= moto_atual_P1_rect.colliderect(moto_atual_P2_rect)
+        if bate_motos:
+            posicao_atual_P1 = posicao_inicial_P1
+            posicao_atual_P2 = posicao_inicial_P2
+            moto_atual_P1= moto_P1_baixo
+            moto_atual_P2= moto_P2_cima
+            moto_atual_P1_rect = moto_atual_P1.get_rect(center=posicao_atual_P1)
+            moto_atual_P2_rect = moto_atual_P2.get_rect(center=posicao_atual_P2)
+            moto_atual_P1_rect.center = posicao_inicial_P1
+            moto_atual_P2_rect.center = posicao_inicial_P2
         
 
     # Atualiza a tela
