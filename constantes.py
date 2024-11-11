@@ -1,4 +1,5 @@
 # IMPORTS
+import pygame
 # INFORMAÇÕES DA TELA 
 WIDTH, HEIGHT = 1920,1080
 
@@ -16,6 +17,8 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 ORANGE = (255, 165, 0)
+#fonte
+FONTE= pygame.font.Font(None, 36)
 
 #TELAS
 TELA_INICIAL = 0
@@ -34,4 +37,9 @@ velocidade_motos= 3
 
 MOTO_WIDTH = 90
 MOTO_HEIGHT = 45
+
+# Variáveis do Timer e Scoreboard
+tempo_inicial = pygame.time.get_ticks()
+tempo_decorrido = 0
+scoreboard = []
 

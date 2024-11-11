@@ -75,13 +75,13 @@ while state["estado"]:
             rastro_list_P1 = []
             rastro_list_P2 = []
 
-        pygame.draw.rect(window, (255,255,255), moto_atual_P1_rect)
+        pygame.draw.rect(window, (255,255,255), moto_atual_P1_rect, )
         # centro_p1 = (posicao_atual_P1[0] + moto_atual_P1_rect.width/2, posicao_atual_P1[1] + moto_atual_P1_rect.height/2)
         rastro_list_P1 = update_rastro_P1(posicao_atual_P1, direcao_P1, rastro_list_P1)
         rastro_list_P2 = update_rastro_P1(posicao_atual_P2, direcao_P2, rastro_list_P2)
 
         for rastro_P1_pos in rastro_list_P1:
-            window.blit(rastro_skin_P1, rastro_P1_pos)
+            window.blit(rastro_skin_P1, [rastro_P1_pos[0]-5, rastro_P1_pos[1]-5])
         
         for rastro_P2_pos in rastro_list_P2:
             window.blit(rastro_skin_P2, rastro_P2_pos)

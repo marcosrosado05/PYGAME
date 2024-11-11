@@ -49,11 +49,11 @@ assets = {
 
 moto_P1= assets['Moto_P1']
 moto_P1 = pygame.transform.scale(moto_P1, (MOTO_WIDTH, MOTO_HEIGHT))
-moto_P1_rect= moto_P1.get_rect(topleft=(posicao_inicial_x_P1, posicao_inicial_y_P1))
+moto_P1_rect= moto_P1.get_rect(center=(posicao_inicial_x_P1, posicao_inicial_y_P1))
 
 moto_P2=  assets['Moto_P2']
 moto_P2 = pygame.transform.scale(moto_P2, (MOTO_WIDTH, MOTO_HEIGHT))
-moto_P2_rect= moto_P2.get_rect(topleft=(posicao_inicial_x_P2, posicao_inicial_y_P2))
+moto_P2_rect= moto_P2.get_rect(center=(posicao_inicial_x_P2, posicao_inicial_y_P2))
 def update_state(state):
 
     #TRATAMENTO DE EVENTOS
@@ -103,7 +103,8 @@ def desenha_p1(window,assets, posicao_inicial_x_p1, posicao_inicial_y_p1, moto_a
     
     moto_P1= assets['Moto_P1']
     moto_P1 = pygame.transform.scale(moto_P1, (MOTO_WIDTH, MOTO_HEIGHT))
-    moto_P1_rect= moto_P1.get_rect(center=(posicao_inicial_x_p1, posicao_inicial_y_p1))
+    # Verificar a direção e alinhar o sprite com o rect !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    moto_P1_rect= moto_P1.get_rect(center=(posicao_inicial_x_p1 + 15, posicao_inicial_y_p1))
     # Desenha a imagem na tela
     window.blit(moto_atual_P1, moto_P1_rect)
 
