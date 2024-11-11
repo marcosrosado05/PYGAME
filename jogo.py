@@ -13,6 +13,14 @@ posicao_atual_P2 = [posicao_inicial_x_P2, posicao_inicial_y_P2]
 moto_P1_baixo = pygame.transform.rotate(moto_P1, 90)
 moto_P2_cima = pygame.transform.rotate(moto_P2, -90)
 
+rastro_skin_P1 = pygame.Surface((RASTRO_WIDTH, RASTRO_HEIGHT))
+rastro_skin_P1.fill(BLUE)
+rastro_P1_list = []
+
+rastro_skin_P2 = pygame.Surface((RASTRO_WIDTH, RASTRO_HEIGHT))
+rastro_skin_P2.fill(ORANGE)
+rastro_P2_list = []
+
 while state["estado"]:
     desenha(window, state, assets)
     update_state(state)
@@ -64,6 +72,16 @@ while state["estado"]:
             moto_atual_P2_rect = moto_atual_P2.get_rect(center=posicao_atual_P2)
             moto_atual_P1_rect.center = posicao_inicial_P1
             moto_atual_P2_rect.center = posicao_inicial_P2
+
+
+            rastro_list_P1 = update_rastro_P1()
+            rastro_lista_P2 = update_rastro_P2()
+
+        for rastro_P1_pos in rastro_list_P1:
+            window.blit(rastro_skin_P1, rastro_P1_pos)
+
+        for rastro_P1_pos in rastro_list_P1:
+            window.blit(rastro_skin_P1, rastro_P1_pos)
         
 
     # Atualiza a tela

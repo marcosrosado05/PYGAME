@@ -200,4 +200,18 @@ def gira_moto_P2(direcao_p2, moto_P2, posicao_atual_P2):
 
     return moto_atual_P2, moto_atual_P2_rect
 
+def update_rastro_P1(posicao_atual_x_P1, posicao_atual_y_P1, direcao_p1, rastro_list_P1):
+
+
+
+    rastro_list_P1.append((posicao_atual_x_P1, posicao_atual_y_P1))
+    rastro_list_P1.pop()
+    return rastro_list_P1
+
+def update_rastro_P2 (posicao_atual_x_P2, posicao_atual_y_P2, direcao_p2, rastro_list_P2):
+
+    rastro_list_P2.append()
+    rastro_list_P2.pop()
+    return rastro_list_P2
+
 pygame.quit()
