@@ -103,7 +103,6 @@ def desenha_p1(window,assets, posicao_inicial_x_p1, posicao_inicial_y_p1, moto_a
     
     moto_P1= assets['Moto_P1']
     moto_P1 = pygame.transform.scale(moto_P1, (MOTO_WIDTH, MOTO_HEIGHT))
-    # Verificar a direção e alinhar o sprite com o rect !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     moto_P1_rect= moto_P1.get_rect(center=(posicao_inicial_x_p1 + 15, posicao_inicial_y_p1))
     # Desenha a imagem na tela
     window.blit(moto_atual_P1, moto_P1_rect)
@@ -112,7 +111,7 @@ def desenha_p2(window, assets, posicao_inicial_x_p2, posicao_inicial_y_p2, moto_
     
     moto_P2=  assets['Moto_P2']
     moto_P2 = pygame.transform.scale(moto_P2, (MOTO_WIDTH, MOTO_HEIGHT))
-    moto_P2_rect= moto_P2.get_rect(center=(posicao_inicial_x_p2, posicao_inicial_y_p2))
+    moto_P2_rect= moto_P2.get_rect(center=(posicao_inicial_x_p2 + 15, posicao_inicial_y_p2))
     # Desenha a imagem na tela
     window.blit(moto_atual_P2, moto_P2_rect)
 
@@ -202,15 +201,6 @@ def gira_moto_P2(direcao_P2, moto_P2, posicao_atual_P2):
     return moto_atual_P2, moto_atual_P2_rect
 
 def update_rastro_P1(posicao_atual_P1, direcao_P1, rastro_list_P1):
-    '''if direcao_P1 == (0, velocidade_motos): #Direção para baixo
-        pos_pixel_rastro1 = (posicao_atual_P1[0], posicao_atual_P1[1])
-    elif direcao_P1 == (0, -velocidade_motos): #Direção para cima
-        pos_pixel_rastro1 = (posicao_atual_P1[0], posicao_atual_P1[1])
-    elif direcao_P1 == (velocidade_motos, 0): #Direção para direita
-        pos_pixel_rastro1 = (posicao_atual_P1[0], posicao_atual_P1[1]+14)
-    elif direcao_P1 == (-velocidade_motos, 0): #Direção para esquerda
-        pos_pixel_rastro1 = (posicao_atual_P1[0] + MOTO_WIDTH, posicao_atual_P1[1]+20)'''
-
     rastro_list_P1.append(posicao_atual_P1)
     if len(rastro_list_P1) > TAMANHO_RASTRO:
         rastro_list_P1.pop(0)

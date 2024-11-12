@@ -18,7 +18,7 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 ORANGE = (255, 165, 0)
 #fonte
-FONTE= pygame.font.Font(None, 36)
+#FONTE= pygame.font.Font(None, 36)
 
 #TELAS
 TELA_INICIAL = 0
