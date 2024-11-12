@@ -115,45 +115,25 @@ def desenha_p2(window, assets, posicao_inicial_x_p2, posicao_inicial_y_p2, moto_
     # Desenha a imagem na tela
     window.blit(moto_atual_P2, moto_P2_rect)
 
-#função pra mover a moto do P1
-def move_moto_P1(posicao_atual_x_P1, posicao_atual_y_P1, direcao_P1, WIDTH, HEIGHT, window, state):
-    posicao_atual_x_P1 += direcao_P1[0]
-    posicao_atual_y_P1 += direcao_P1[1]
+#função pra mover a moto
+def move_moto(posicao_atual_x, posicao_atual_y, direcao, WIDTH, HEIGHT, window, state):
+    posicao_atual_x += direcao[0]
+    posicao_atual_y += direcao[1]
 
     # Verifique se a sprite bateu na borda da tela
-    if posicao_atual_x_P1 < 0 or posicao_atual_x_P1 > WIDTH or posicao_atual_y_P1 < 0 or posicao_atual_y_P1 > HEIGHT:
+    if posicao_atual_x < 0 or posicao_atual_x > WIDTH or posicao_atual_y < 0 or posicao_atual_y > HEIGHT:
         state["estado"]= False  # Retorna False se bater na borda e acaba o jogo
         return
-    if posicao_atual_x_P1 < WIDTH / 2 - assets['tabuleiro1'].get_width() // 2 or posicao_atual_x_P1 > WIDTH / 2 + assets['tabuleiro1'].get_width() // 2 - 65:
-        posicao_atual_x_P1 -= direcao_P1[0]
+    if posicao_atual_x < WIDTH / 2 - assets['tabuleiro1'].get_width() // 2 or posicao_atual_x > WIDTH / 2 + assets['tabuleiro1'].get_width() // 2 - 65:
+        posicao_atual_x -= direcao[0]
 
-    if posicao_atual_y_P1 < 100 or posicao_atual_y_P1 > assets['tabuleiro1'].get_height() + 31:
-        posicao_atual_y_P1 -= direcao_P1[1]
+    if posicao_atual_y < 100 or posicao_atual_y > assets['tabuleiro1'].get_height() + 31:
+        posicao_atual_y -= direcao[1]
 
-    posicao_atual_P1= [posicao_atual_x_P1, posicao_atual_y_P1]
-    return posicao_atual_P1
+    posicao_atual= [posicao_atual_x, posicao_atual_y]
+    return posicao_atual
     
-
-#função pra mover a moto do P2
-def move_moto_P2(posicao_atual_x_P2, posicao_atual_y_P2, direcao_P2, WIDTH, HEIGHT, window, state):
-    
-    posicao_atual_x_P2 += direcao_P2[0]
-    posicao_atual_y_P2 += direcao_P2[1]
-
-    # Verifique se a sprite bateu na borda da tela
-    if posicao_atual_x_P2 < 0 or posicao_atual_x_P2 > WIDTH or posicao_atual_y_P2 < 0 or posicao_atual_y_P2 > HEIGHT:
-        state["estado"]= False  # Retorna False se bater na borda e acaba o jogo
-        return
-    if posicao_atual_x_P2 < WIDTH / 2 - assets['tabuleiro1'].get_width() // 2 or posicao_atual_x_P2 > WIDTH / 2 + assets['tabuleiro1'].get_width() // 2 - 65:
-        posicao_atual_x_P2 -= direcao_P2[0]
-
-    if posicao_atual_y_P2 < 100 or posicao_atual_y_P2 > assets['tabuleiro1'].get_height() + 31:
-        posicao_atual_y_P2 -= direcao_P2[1]
-
-    posicao_atual_P2= [posicao_atual_x_P2, posicao_atual_y_P2]
-    return posicao_atual_P2
-    
-#função para girar a moto do P1
+#função para girar a moto
 def gira_moto_P1(direcao_P1, moto_P1, posicao_atual_P1):
     # Gira a imagem da moto e cria o rect correspondente
     moto_P1_baixo = pygame.transform.rotate(moto_P1, 90)
@@ -200,21 +180,13 @@ def gira_moto_P2(direcao_P2, moto_P2, posicao_atual_P2):
 
     return moto_atual_P2, moto_atual_P2_rect
 
-def update_rastro_P1(posicao_atual_P1, direcao_P1, rastro_list_P1):
-    rastro_list_P1.append(posicao_atual_P1)
-    if len(rastro_list_P1) > TAMANHO_RASTRO:
-        rastro_list_P1.pop(0)
+def update_rastro (posicao_atual, rastro_list):
+    pos_pixel_rastro1 = posicao_atual
 
-    return rastro_list_P1
+    rastro_list.append(pos_pixel_rastro1)
+    if len(rastro_list) > TAMANHO_RASTRO:
+        rastro_list.pop(0)
 
-def update_rastro_P2 (posicao_atual_P2, direcao_P2, rastro_list_P2):
-
-    pos_pixel_rastro2 = posicao_atual_P2
-
-    rastro_list_P2.append(pos_pixel_rastro2)
-    if len(rastro_list_P2) > TAMANHO_RASTRO:
-        rastro_list_P2.pop(0)
-
-    return rastro_list_P2
+    return rastro_list
 
 pygame.quit()

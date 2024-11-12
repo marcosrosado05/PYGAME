@@ -27,8 +27,8 @@ while state["estado"]:
 
     if state['tela_atual'] == TELA_DE_PLAY:
         
-        rastro_list_P1 = update_rastro_P1(posicao_atual_P1, direcao_P1, rastro_list_P1)
-        rastro_list_P2 = update_rastro_P1(posicao_atual_P2, direcao_P2, rastro_list_P2)
+        rastro_list_P1 = update_rastro(posicao_atual_P1, direcao_P1, rastro_list_P1)
+        rastro_list_P2 = update_rastro(posicao_atual_P2, direcao_P2, rastro_list_P2)
 
         for rastro_P1_pos in rastro_list_P1:
             window.blit(rastro_skin_P1, [rastro_P1_pos[0]-13, rastro_P1_pos[1]-5])
@@ -42,6 +42,7 @@ while state["estado"]:
         desenha_p1 (window, assets, posicao_atual_P1[0], posicao_atual_P1[1], moto_atual_P1)
         desenha_p2 (window, assets, posicao_atual_P2[0], posicao_atual_P2[1], moto_atual_P2)
 
+        
         # Verifique quais teclas estão pressionadas para alterar a direção do P1
         keys = pygame.key.get_pressed()
         if keys[pygame.K_a]:   # Esquerda
@@ -65,9 +66,9 @@ while state["estado"]:
             direcao_P2 = (0, velocidade_motos)
 
         # Chame a função para mover as duas motos e verificar se está dentro do tabuleiro
-        posicao_atual_P1_2= move_moto_P1 (posicao_atual_P1[0], posicao_atual_P1[1], direcao_P1, WIDTH, HEIGHT, window, state)
+        posicao_atual_P1_2= move_moto (posicao_atual_P1[0], posicao_atual_P1[1], direcao_P1, WIDTH, HEIGHT, window, state)
         posicao_atual_P1 = posicao_atual_P1_2
-        posicao_atual_P2_2= move_moto_P2 (posicao_atual_P2[0], posicao_atual_P2[1], direcao_P2, WIDTH, HEIGHT, window, state)
+        posicao_atual_P2_2= move_moto (posicao_atual_P2[0], posicao_atual_P2[1], direcao_P2, WIDTH, HEIGHT, window, state)
         posicao_atual_P2 = posicao_atual_P2_2
 
         # Verifique se as motos bateram uma na outra
