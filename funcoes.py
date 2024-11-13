@@ -5,11 +5,8 @@ from constantes import *
 
 # INICIA O JOGO
 
-
-
 def inicializa():
     pygame.init()
-    pygame.mixer.init()
 
     # DIMENSIONA A TELA
     window = pygame.display.set_mode((WIDTH, HEIGHT)) 
@@ -20,17 +17,6 @@ def inicializa():
     state = {'tela_atual': TELA_INICIAL, 'estado': True}
 
     # dicionario com todos os itens assets
-    assets = {
-        "tela_de_play" : pygame.image.load("image/TELA_PLAY_TRON.png"),
-        "titulo" : 'TRON LEGACY' ,
-        "tabuleiro1": pygame.image.load("image/tabuleiro1.png"),
-        "tabuleiro2": pygame.image.load("image/tabuleiro2.png"),
-        "Moto_P1": pygame.image.load("image/moto-azul.png"),
-        "Moto_P2": pygame.image.load("image/moto-laranja.png"),
-        "Blue_wins" : pygame.image.load("image/blue_wins.webp"),
-        "Orange_wins" : pygame.image.load("image/Orange_wins.webp"),
-        'boom_sound' :pygame.mixer.Sound('sons/tron-light-cycle-chase-sound-fx-1982-6jrpzais_MOV5ehTB.mp3')
-    }
 
     # Imprime instruções
     print('*' * len(assets['titulo']))
@@ -44,7 +30,6 @@ def inicializa():
         pygame.mixer.music.play(-1)
 
     return window, state, assets
-
 
 moto_P1= assets['Moto_P1']
 moto_P1 = pygame.transform.scale(moto_P1, (MOTO_WIDTH, MOTO_HEIGHT))
@@ -72,13 +57,25 @@ def update_state(state):
                     state['tela_atual'] = TELA_DE_PLAY
                     if state["estado"] == True:
                         pygame.mixer.music.load("sons/Daft Punk - Derezzed (Lunar Lightcycle Remix).mp3")
-                        pygame.mixer.music.set_volume(0.3)
-                        pygame.mixer.music.play(0, start=3, fade_ms=3000)
+                        pygame.mixer.music.set_volume(0.5)
+                        pygame.mixer.music.play(-4)
         #EVENTOS TELA DE PLAY          
         elif state['tela_atual'] == TELA_DE_PLAY:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:   # .key todo evento tem uma chave (key) e essa chave é uma série de números da biblio do pygame, cada tecla é um número distinto 
                     state['tela_atual'] = TELA_INICIAL
+                if event.key == pygame.K_ESCAPE:
+                    state['estado'] = False #QUEBRA O LOOP DO JOGO
+                    return
+                
+        #EVENTOS DA TELA DOS VENCEDORES
+        if state['tela_atual'] == TELA_VENCEDOR_P1:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    state['estado'] = False #QUEBRA O LOOP DO JOGO
+                    return
+        if state['tela_atual'] == TELA_VENCEDOR_P2:
+            if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     state['estado'] = False #QUEBRA O LOOP DO JOGO
                     return
@@ -99,7 +96,16 @@ def desenha(window, state, assets):
         window.fill(BLACK)
         window.blit(assets['tabuleiro1'], (WIDTH / 2 - assets['tabuleiro1'].get_width() / 2, HEIGHT / 2 - assets['tabuleiro1'].get_height() / 2))
 
-    # pygame.display.flip() #ATUALIZANDO FRAME
+    #DESENHANDO TELA DO VENCEDOR 1
+    if state['tela_atual'] == TELA_VENCEDOR_P1:
+        window.fill(BLACK)
+        window.blit(assets['P1_vencedor'], (WIDTH/2- assets['P1_vencedor'].get_width()/2,0))
+
+    #DESENHANDO TELA DO VENCEDOR 2
+    if state['tela_atual'] == TELA_VENCEDOR_P2:
+        window.fill(BLACK)
+        window.blit(assets['P2_vencedor'], (WIDTH/2 - assets['P2_vencedor'].get_width()/2,0))
+
     
 
 def desenha_p1(window,assets, posicao_inicial_x_p1, posicao_inicial_y_p1, moto_atual_P1):
@@ -191,5 +197,12 @@ def update_rastro (posicao_atual, rastro_list):
         rastro_list.pop(0)
 
     return rastro_list
+
+def colisao_rastro(rastro_list, moto_rect):
+    for posicao_rastro in rastro_list:
+        rastro_rect = pygame.Rect(posicao_rastro[0], posicao_rastro[1], RASTRO_WIDTH, RASTRO_HEIGHT)
+        if rastro_rect.colliderect(moto_rect):
+            return True
+    return False
 
 pygame.quit()

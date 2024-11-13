@@ -24,7 +24,7 @@ rastro_list_P2 = []
 while state["estado"]:
     desenha(window, state, assets)
     update_state(state)
-    
+
     if state['tela_atual'] == TELA_DE_PLAY:
         
         rastro_list_P1 = update_rastro(posicao_atual_P1, rastro_list_P1)
@@ -74,7 +74,6 @@ while state["estado"]:
         # Verifique se as motos bateram uma na outra
         bate_motos= moto_atual_P1_rect.colliderect(moto_atual_P2_rect)
         if bate_motos:
-            assets['boom_sound'].play()
             posicao_atual_P1 = posicao_inicial_P1
             posicao_atual_P2 = posicao_inicial_P2
             moto_atual_P1= moto_P1_baixo
@@ -85,7 +84,11 @@ while state["estado"]:
             moto_atual_P2_rect.center = posicao_inicial_P2
             rastro_list_P1 = []
             rastro_list_P2 = []
-            
+
+        if colisao_rastro(rastro_list_P1, moto_atual_P2_rect):
+            state['tela_atual'] = TELA_VENCEDOR_P1
+        if colisao_rastro(rastro_list_P2, moto_atual_P1_rect):
+            state['tela_atual'] = TELA_VENCEDOR_P2
 
     # Atualiza a tela
     pygame.display.update()

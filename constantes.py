@@ -23,6 +23,8 @@ ORANGE = (255, 165, 0)
 #TELAS
 TELA_INICIAL = 0
 TELA_DE_PLAY = 1
+TELA_VENCEDOR_P1= 2
+TELA_VENCEDOR_P2= 3
 
 #JOGADORES
 posicao_inicial_x_P1=560
@@ -49,5 +51,8 @@ assets = {
     "tabuleiro1": pygame.image.load("image/tabuleiro1.png"),
     "tabuleiro2": pygame.image.load("image/tabuleiro2.png"),
     "Moto_P1": pygame.image.load("image/moto-azul.png"),
-    "Moto_P2": pygame.image.load("image/moto-laranja.png")
-}
+    "Moto_P2": pygame.image.load("image/moto-laranja.png"),
+    "P1_vencedor" : pygame.image.load("image/blue_wins.webp"),
+    "P2_vencedor" : pygame.image.load("image/orange_wins.webp")
+
+} 
