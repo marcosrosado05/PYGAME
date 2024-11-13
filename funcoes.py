@@ -35,6 +35,11 @@ def inicializa():
     print('*' * len(assets['titulo']))
     print('Utilize as teclas "W", "A", "S", "D" e "↑", "←", "→", "↓" PARA MOVER OS PERSONAGENS.')
 
+    if state == {'tela_atual': TELA_INICIAL, 'estado': True}:
+        pygame.mixer.music.load("sons/Encom Part II.mp3")
+        pygame.mixer.music.set_volume(2)
+        pygame.mixer.music.play(-1)
+
     return window, state, assets
 
 assets = {
@@ -71,7 +76,10 @@ def update_state(state):
                 
                 if event.key == pygame.K_SPACE:
                     state['tela_atual'] = TELA_DE_PLAY
-
+                    if state["estado"] == True:
+                        pygame.mixer.music.load("sons/Daft Punk - Derezzed (Lunar Lightcycle Remix).mp3")
+                        pygame.mixer.music.set_volume(0.02)
+                        pygame.mixer.music.play(-4)
         #EVENTOS TELA DE PLAY          
         elif state['tela_atual'] == TELA_DE_PLAY:
             if event.type == pygame.KEYDOWN:
@@ -81,6 +89,8 @@ def update_state(state):
                     state['estado'] = False #QUEBRA O LOOP DO JOGO
                     return
 
+    
+    
     # return True #MANTÉM O LOOP DO JOGO
 
 def desenha(window, state, assets):

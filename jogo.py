@@ -24,7 +24,7 @@ rastro_list_P2 = []
 while state["estado"]:
     desenha(window, state, assets)
     update_state(state)
-
+    
     if state['tela_atual'] == TELA_DE_PLAY:
         
         rastro_list_P1 = update_rastro(posicao_atual_P1, rastro_list_P1)
