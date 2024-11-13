@@ -4,18 +4,8 @@ from funcoes import *
 
 
 window, state, assets = inicializa()
-direcao_P1= (0, velocidade_motos)
-direcao_P2= (0, -velocidade_motos)
-
-posicao_atual_P1 = [posicao_inicial_x_P1, posicao_inicial_y_P1]
-posicao_atual_P2 = [posicao_inicial_x_P2, posicao_inicial_y_P2]
-
 moto_P1_baixo = pygame.transform.rotate(moto_P1, 90)
 moto_P2_cima = pygame.transform.rotate(moto_P2, -90)
-
-rastro_skin_P1 = pygame.Surface((RASTRO_WIDTH, RASTRO_HEIGHT))
-rastro_skin_P1.fill(BLUE)
-rastro_list_P1 = []
 
 rastro_skin_P2 = pygame.Surface((RASTRO_WIDTH, RASTRO_HEIGHT))
 rastro_skin_P2.fill(ORANGE)
@@ -71,25 +61,35 @@ while state["estado"]:
         posicao_atual_P2_2= move_moto (posicao_atual_P2[0], posicao_atual_P2[1], direcao_P2, WIDTH, HEIGHT, window, state)
         posicao_atual_P2 = posicao_atual_P2_2
 
-        # Verifique se as motos bateram uma na outra
-        bate_motos= moto_atual_P1_rect.colliderect(moto_atual_P2_rect)
+        # Verifica se as motos bateram uma na outra
+        bate_motos = moto_atual_P1_rect.colliderect(moto_atual_P2_rect)
         if bate_motos:
+            # Reseta as posições, direção e rastros ao colidirem
             posicao_atual_P1 = posicao_inicial_P1
             posicao_atual_P2 = posicao_inicial_P2
-            moto_atual_P1= moto_P1_baixo
-            moto_atual_P2= moto_P2_cima
+            moto_atual_P1 = moto_P1_baixo
+            moto_atual_P2 = moto_P2_cima
             moto_atual_P1_rect = moto_atual_P1.get_rect(center=posicao_atual_P1)
             moto_atual_P2_rect = moto_atual_P2.get_rect(center=posicao_atual_P2)
-            moto_atual_P1_rect.center = posicao_inicial_P1
-            moto_atual_P2_rect.center = posicao_inicial_P2
             rastro_list_P1 = []
             rastro_list_P2 = []
 
+        # Verifica colisão do rastro e pontuação
         if colisao_rastro(rastro_list_P1, moto_atual_P2_rect):
-            state['tela_atual'] = TELA_VENCEDOR_P1
+            pontos_jogador_P1 += 1
         if colisao_rastro(rastro_list_P2, moto_atual_P1_rect):
+            pontos_jogador_P2 += 1
+
+        # Altera para a tela de vencedor apenas se um jogador atingir 2 pontos
+        if pontos_jogador_P1 == 2:
+            state['tela_atual'] = TELA_VENCEDOR_P1
+        elif pontos_jogador_P2 == 2:
             state['tela_atual'] = TELA_VENCEDOR_P2
 
+            # Atualiza a tela
+            pygame.display.update()
+    pygame.display.update()
+"""
     #ESSA PARTE ESTÁ DANDO ERRO, O JOGO TRAVA E FECHA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     # Lógica da tela de vencedor
     if state['tela_atual'] == TELA_VENCEDOR_P1:
@@ -106,7 +106,5 @@ while state["estado"]:
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_RETURN]:
-            reset_game()
+            reset_game()"""
 
-    # Atualiza a tela
-    pygame.display.update()
