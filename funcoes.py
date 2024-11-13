@@ -5,8 +5,11 @@ from constantes import *
 
 # INICIA O JOGO
 
+
+
 def inicializa():
     pygame.init()
+    pygame.mixer.init()
 
     # DIMENSIONA A TELA
     window = pygame.display.set_mode((WIDTH, HEIGHT)) 
@@ -26,7 +29,8 @@ def inicializa():
         "Moto_P1": pygame.image.load("image/moto-azul.png"),
         "Moto_P2": pygame.image.load("image/moto-laranja.png"),
         "Blue_wins" : pygame.image.load("image/blue_wins.webp"),
-        "Orange_wins" : pygame.image.load("image/Orange_wins.webp")
+        "Orange_wins" : pygame.image.load("image/Orange_wins.webp"),
+        'boom_sound' :pygame.mixer.Sound('sons/tron-light-cycle-chase-sound-fx-1982-6jrpzais_MOV5ehTB.mp3')
     }
 
     # Imprime instruções
@@ -78,8 +82,8 @@ def update_state(state):
                     state['tela_atual'] = TELA_DE_PLAY
                     if state["estado"] == True:
                         pygame.mixer.music.load("sons/Daft Punk - Derezzed (Lunar Lightcycle Remix).mp3")
-                        pygame.mixer.music.set_volume(0.02)
-                        pygame.mixer.music.play(-4)
+                        pygame.mixer.music.set_volume(0.3)
+                        pygame.mixer.music.play(0, start=3, fade_ms=3000)
         #EVENTOS TELA DE PLAY          
         elif state['tela_atual'] == TELA_DE_PLAY:
             if event.type == pygame.KEYDOWN:
