@@ -75,15 +75,21 @@ def update_state(state):
                 if event.key == pygame.K_ESCAPE:
                     state['estado'] = False #QUEBRA O LOOP DO JOGO
                     return
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    state['tela_atual'] = TELA_INICIAL
+                    return
         if state['tela_atual'] == TELA_VENCEDOR_P2:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     state['estado'] = False #QUEBRA O LOOP DO JOGO
                     return
-
-    
-    
-    # return True #MANTÉM O LOOP DO JOGO
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    state['tela_atual'] = TELA_INICIAL
+                    return
+                
+    return True #MANTÉM O LOOP DO JOGO
 
 def desenha(window, state, assets):
 
@@ -196,7 +202,17 @@ def update_rastro (posicao_atual, rastro_list):
 
     return rastro_list
 
-def colisao_rastro(rastro_list, moto_rect):
+
+def colisao_rastro_P1(rastro_list, moto_rect, pontos_jogador_P1):
+    pontos_jogador_P1+=1
+    for posicao_rastro in rastro_list:
+        rastro_rect = pygame.Rect(posicao_rastro[0], posicao_rastro[1], RASTRO_WIDTH, RASTRO_HEIGHT)
+        if rastro_rect.colliderect(moto_rect):
+            return True
+    return False
+
+def colisao_rastro_P2(rastro_list, moto_rect, pontos_jogador_P2):
+    pontos_jogador_P2+=1
     for posicao_rastro in rastro_list:
         rastro_rect = pygame.Rect(posicao_rastro[0], posicao_rastro[1], RASTRO_WIDTH, RASTRO_HEIGHT)
         if rastro_rect.colliderect(moto_rect):

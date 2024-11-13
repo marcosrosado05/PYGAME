@@ -1,7 +1,6 @@
 # IMPORTS
 import pygame
 pygame.font.init()
-# INFORMAÇÕES DA TELA 
 
 
 # FPS
