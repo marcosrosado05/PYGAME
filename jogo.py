@@ -94,13 +94,15 @@ while state["estado"]:
             rastro_list_P1 = []
             rastro_list_P2 = []
 
-        """texto_p1 = fonte.render(f"Jogador 1: {pontos_jogador_P1}", True, BLUE)
+        
+        """# Faz o placar do jogador 1
+        texto_p1 = fonte.render(f"Jogador 1: {pontos_jogador_P1}", True, BLUE)
         window.blit(texto_p1, (50, 20))  # Posição do placar do jogador 1 (x=50, y=20)
     
         # Faz o placar do jogador 2
         texto_p2 = fonte.render(f"Jogador 2: {pontos_jogador_P2}", True, ORANGE)
-        window.blit(texto_p2, (WIDTH - 200, 20))  # Posição do placar do jogador 2 (x=WIDTH - 200, y=20)
-        """
+        window.blit(texto_p2, (WIDTH - 200, 20))  # Posição do placar do jogador 2 (x=WIDTH - 200, y=20)"""
+    
         
         # Altera para a tela de vencedor apenas se um jogador atingir 2 pontos
         if pontos_jogador_P1 == 2:
