@@ -1,5 +1,6 @@
 # IMPORTS
 import pygame
+pygame.font.init()
 # INFORMAÇÕES DA TELA 
 WIDTH, HEIGHT = 1920,1080
 
@@ -17,8 +18,9 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 ORANGE = (255, 165, 0)
+
 #fonte
-#FONTE= pygame.font.Font(None, 36)
+fonte = pygame.font.Font(None, 50)
 
 #TELAS
 TELA_INICIAL = 0

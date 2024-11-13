@@ -90,5 +90,23 @@ while state["estado"]:
         if colisao_rastro(rastro_list_P2, moto_atual_P1_rect):
             state['tela_atual'] = TELA_VENCEDOR_P2
 
+    #ESSA PARTE ESTÁ DANDO ERRO, O JOGO TRAVA E FECHA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    # Lógica da tela de vencedor
+    if state['tela_atual'] == TELA_VENCEDOR_P1:
+        texto_reiniciar = fonte.render("PRESSIONE ENTER PARA JOGAR NOVAMENTE", True, WHITE)
+        window.blit(texto_reiniciar, (WIDTH / 2 - texto_reiniciar.get_width() / 2, HEIGHT - 100))
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_RETURN]:
+            reset_game()
+
+    elif state['tela_atual'] == TELA_VENCEDOR_P2:
+        texto_reiniciar = fonte.render("PRESSIONE ENTER PARA JOGAR NOVAMENTE", True, WHITE)
+        window.blit(texto_reiniciar, (WIDTH / 2 - texto_reiniciar.get_width() / 2, HEIGHT - 100))
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_RETURN]:
+            reset_game()
+
     # Atualiza a tela
     pygame.display.update()

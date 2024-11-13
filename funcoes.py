@@ -7,6 +7,7 @@ from constantes import *
 
 def inicializa():
     pygame.init()
+    pygame.font.init()
 
     # DIMENSIONA A TELA
     window = pygame.display.set_mode((WIDTH, HEIGHT)) 
@@ -130,9 +131,6 @@ def move_moto(posicao_atual_x, posicao_atual_y, direcao, WIDTH, HEIGHT, window, 
     posicao_atual_y += direcao[1]
 
     # Verifique se a sprite bateu na borda da tela
-    if posicao_atual_x < 0 or posicao_atual_x > WIDTH or posicao_atual_y < 0 or posicao_atual_y > HEIGHT:
-        state["estado"]= False  # Retorna False se bater na borda e acaba o jogo
-        return
     if posicao_atual_x < WIDTH / 2 - assets['tabuleiro1'].get_width() // 2 or posicao_atual_x > WIDTH / 2 + assets['tabuleiro1'].get_width() // 2 - 65:
         posicao_atual_x -= direcao[0]
 
@@ -204,5 +202,15 @@ def colisao_rastro(rastro_list, moto_rect):
         if rastro_rect.colliderect(moto_rect):
             return True
     return False
+
+def reset_game(rastro_list_P1, rastro_list_P2, state):
+    global posicao_atual_P1, posicao_atual_P2, direcao_P1, direcao_P2
+    posicao_atual_P1 = [posicao_inicial_x_P1, posicao_inicial_y_P1]
+    posicao_atual_P2 = [posicao_inicial_x_P2, posicao_inicial_y_P2]
+    direcao_P1 = (0, velocidade_motos)
+    direcao_P2 = (0, -velocidade_motos)
+    rastro_list_P1.clear()
+    rastro_list_P2.clear()
+    state['tela_atual'] = TELA_DE_PLAY
 
 pygame.quit()
