@@ -43,3 +43,11 @@ tempo_inicial = pygame.time.get_ticks()
 tempo_decorrido = 0
 scoreboard = []
 
+assets = {
+    "tela_de_play" : pygame.image.load("image/TELA_PLAY_TRON.png"),
+    "titulo" : 'TRON LEGACY' ,
+    "tabuleiro1": pygame.image.load("image/tabuleiro1.png"),
+    "tabuleiro2": pygame.image.load("image/tabuleiro2.png"),
+    "Moto_P1": pygame.image.load("image/moto-azul.png"),
+    "Moto_P2": pygame.image.load("image/moto-laranja.png")
+}

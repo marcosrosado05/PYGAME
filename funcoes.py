@@ -23,7 +23,6 @@ def inicializa():
     assets = {
         "tela_de_play" : pygame.image.load("image/TELA_PLAY_TRON.png"),
         "titulo" : 'TRON LEGACY' ,
-        "logo_titulo" : pygame.image.load("image/logo.png"),
         "tabuleiro1": pygame.image.load("image/tabuleiro1.png"),
         "tabuleiro2": pygame.image.load("image/tabuleiro2.png"),
         "Moto_P1": pygame.image.load("image/moto-azul.png"),
@@ -46,15 +45,6 @@ def inicializa():
 
     return window, state, assets
 
-assets = {
-    "tela_de_play" : pygame.image.load("image/TELA_PLAY_TRON.png"),
-    "titulo" : 'TRON LEGACY' ,
-    "logo_titulo" : pygame.image.load("image/logo.png"),
-    "tabuleiro1": pygame.image.load("image/tabuleiro1.png"),
-    "tabuleiro2": pygame.image.load("image/tabuleiro2.png"),
-    "Moto_P1": pygame.image.load("image/moto-azul.png"),
-    "Moto_P2": pygame.image.load("image/moto-laranja.png")
-}
 
 moto_P1= assets['Moto_P1']
 moto_P1 = pygame.transform.scale(moto_P1, (MOTO_WIDTH, MOTO_HEIGHT))
@@ -103,7 +93,6 @@ def desenha(window, state, assets):
     if state['tela_atual'] == TELA_INICIAL:
         window.fill(BLACK)
         window.blit(assets['tela_de_play'], (WIDTH/2 - assets['tela_de_play'].get_width()/2,0))
-        window.blit(assets['logo_titulo'], (WIDTH/2 - assets['logo_titulo'].get_width()/2,HEIGHT/3 - 100))
 
     #DESENHANDO TELA DE PLAY
     if state['tela_atual'] == TELA_DE_PLAY:
