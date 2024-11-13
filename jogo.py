@@ -27,8 +27,8 @@ while state["estado"]:
 
     if state['tela_atual'] == TELA_DE_PLAY:
         
-        rastro_list_P1 = update_rastro(posicao_atual_P1, direcao_P1, rastro_list_P1)
-        rastro_list_P2 = update_rastro(posicao_atual_P2, direcao_P2, rastro_list_P2)
+        rastro_list_P1 = update_rastro(posicao_atual_P1, rastro_list_P1)
+        rastro_list_P2 = update_rastro(posicao_atual_P2, rastro_list_P2)
 
         for rastro_P1_pos in rastro_list_P1:
             window.blit(rastro_skin_P1, [rastro_P1_pos[0]-13, rastro_P1_pos[1]-5])
