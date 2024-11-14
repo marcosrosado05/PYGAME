@@ -7,10 +7,6 @@ window, state, assets = inicializa()
 moto_P1_baixo = pygame.transform.rotate(moto_P1, 90)
 moto_P2_cima = pygame.transform.rotate(moto_P2, -90)
 
-rastro_skin_P2 = pygame.Surface((RASTRO_WIDTH, RASTRO_HEIGHT))
-rastro_skin_P2.fill(ORANGE)
-rastro_list_P2 = []
-
 while state["estado"]:
     desenha(window, state, assets)
     update_state(state)

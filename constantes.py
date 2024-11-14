@@ -22,6 +22,7 @@ fonte = pygame.font.Font(None, 50)
 
 #TELAS
 WIDTH, HEIGHT = 1920,1080
+WIDTH_TAB, HEIGHT_TAB = 872, 868
 TELA_INICIAL = 0
 TELA_DE_PLAY = 1
 TELA_VENCEDOR_P1= 2
@@ -60,6 +61,9 @@ rastro_skin_P1 = pygame.Surface((RASTRO_WIDTH, RASTRO_HEIGHT))
 rastro_skin_P1.fill(BLUE)
 rastro_list_P1 = []
 
+rastro_skin_P2 = pygame.Surface((RASTRO_WIDTH, RASTRO_HEIGHT))
+rastro_skin_P2.fill(ORANGE)
+rastro_list_P2 = []
 
 # Variáveis do Timer e Scoreboard
 tempo_inicial = pygame.time.get_ticks()

@@ -96,7 +96,8 @@ def desenha(window, state, assets):
     #DESENHANDO TELA INICIAL
     if state['tela_atual'] == TELA_INICIAL:
         window.fill(BLACK)
-        window.blit(assets['tela_de_play'], (WIDTH/2 - assets['tela_de_play'].get_width()/2,0))
+        tela_incial_escala = pygame.transform.scale(assets['tela_de_play'], (WIDTH_TAB, HEIGHT_TAB))
+        window.blit(tela_incial_escala, (WIDTH/2 - WIDTH_TAB/2,106))
 
     #DESENHANDO TELA DE PLAY
     if state['tela_atual'] == TELA_DE_PLAY:
@@ -106,12 +107,15 @@ def desenha(window, state, assets):
     #DESENHANDO TELA DO VENCEDOR 1
     if state['tela_atual'] == TELA_VENCEDOR_P1:
         window.fill(BLACK)
-        window.blit(assets['P1_vencedor'], (WIDTH/2- assets['P1_vencedor'].get_width()/2,0))
+        vencedor_p1 = pygame.transform.scale(assets['P1_vencedor'], (WIDTH_TAB, HEIGHT_TAB))
+        window.blit(vencedor_p1, (WIDTH/2 - WIDTH_TAB/2,100))
+        #WIDTH/2- assets['P1_vencedor'].get_width()/2
 
     #DESENHANDO TELA DO VENCEDOR 2
     if state['tela_atual'] == TELA_VENCEDOR_P2:
         window.fill(BLACK)
-        window.blit(assets['P2_vencedor'], (WIDTH/2 - assets['P2_vencedor'].get_width()/2,0))
+        vencedor_p2 = pygame.transform.scale(assets['P2_vencedor'], (WIDTH_TAB, HEIGHT_TAB))
+        window.blit(vencedor_p2, (WIDTH/2 - WIDTH_TAB/2,100))
 
     
 
