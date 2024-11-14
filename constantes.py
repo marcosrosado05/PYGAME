@@ -4,7 +4,7 @@ pygame.font.init()
 
 
 # FPS
-FPS = 120
+FPS = 40
 
 
 # CORES
@@ -46,7 +46,7 @@ posicao_inicial_y_P2=900
 posicao_inicial_P1= [posicao_inicial_x_P1, posicao_inicial_y_P1]
 posicao_inicial_P2= [posicao_inicial_x_P2, posicao_inicial_y_P2]
 
-velocidade_motos= 3
+velocidade_motos= 5
 
 pontos_jogador_P1=0
 pontos_jogador_P2=0

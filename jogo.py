@@ -7,9 +7,13 @@ window, state, assets = inicializa()
 moto_P1_baixo = pygame.transform.rotate(moto_P1, 90)
 moto_P2_cima = pygame.transform.rotate(moto_P2, -90)
 
+clock = pygame.time.Clock()
+
 while state["estado"]:
     desenha(window, state, assets)
     update_state(state)
+
+    clock.tick(FPS)
 
     if state['tela_atual'] == TELA_DE_PLAY:
 
