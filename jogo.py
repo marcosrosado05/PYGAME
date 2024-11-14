@@ -108,10 +108,12 @@ while state["estado"]:
         if pontos_jogador_P1 == 2:
             state['tela_atual'] = TELA_VENCEDOR_P1
             pontos_jogador_P1=0
+            pontos_jogador_P2=0
             pygame.display.update()
         elif pontos_jogador_P2 == 2:
             state['tela_atual'] = TELA_VENCEDOR_P2
             pontos_jogador_P1=0
+            pontos_jogador_P2=0
             pygame.display.update()
 
     # Atualiza a tela
