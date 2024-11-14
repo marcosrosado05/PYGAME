@@ -4,7 +4,7 @@ pygame.font.init()
 
 
 # FPS
-FPS = 40
+FPS = 60
 
 
 # CORES
