@@ -17,7 +17,7 @@ ORANGE = (255, 165, 0)
 
 
 #fonte
-fonte = pygame.font.Font(None, 50)
+#fonte = pygame.font.Font(None, 50)
 
 
 #TELAS
