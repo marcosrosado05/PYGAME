@@ -82,6 +82,7 @@ while state["estado"]:
         # Verifica colisão do rastro e pontuação
         if colisao_rastro_P1(rastro_list_P1, moto_atual_P2_rect, pontos_jogador_P1):
             # Reseta o jogo pra proxima rodada
+            assets['boom_sound'].play()
             pontos_jogador_P1 += 1
             posicao_atual_P1 = posicao_inicial_P1
             posicao_atual_P2 = posicao_inicial_P2
@@ -92,6 +93,7 @@ while state["estado"]:
 
         elif colisao_rastro_P2(rastro_list_P2, moto_atual_P1_rect, pontos_jogador_P2):
             # Reseta o jogo pra proxima rodada
+            assets['boom_sound'].play()
             pontos_jogador_P2 += 1
             posicao_atual_P1 = posicao_inicial_P1
             posicao_atual_P2 = posicao_inicial_P2

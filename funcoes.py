@@ -8,6 +8,7 @@ from constantes import *
 def inicializa():
     pygame.init()
     pygame.font.init()
+    pygame.mixer.init()
 
     # DIMENSIONA A TELA
     window = pygame.display.set_mode((WIDTH, HEIGHT)) 

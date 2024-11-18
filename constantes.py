@@ -1,7 +1,7 @@
 # IMPORTS
 import pygame
 pygame.font.init()
-
+pygame.mixer.init()
 
 # FPS
 FPS = 60
@@ -78,7 +78,7 @@ assets = {
     "Moto_P1": pygame.image.load("image/moto-azul.png"),
     "Moto_P2": pygame.image.load("image/moto-laranja.png"),
     "P1_vencedor" : pygame.image.load("image/blue_wins.webp"),
-    "P2_vencedor" : pygame.image.load("image/orange_wins.webp")
-
+    "P2_vencedor" : pygame.image.load("image/orange_wins.webp"),
+    "boom_sound" :pygame.mixer.Sound('sons/tron-light-cycle-chase-sound-fx-1982-6jrpzais_MOV5ehTB.mp3')
 } 
 
