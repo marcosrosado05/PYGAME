@@ -19,9 +19,9 @@ while state["estado"]:
 
         fonte = pygame.font.Font(None, 48)
         texto_P1 = fonte.render(f"Jogador 1: {pontos_jogador_P1}", True, BLUE)
-        window.blit(texto_P1, [200, 200])
+        window.blit(texto_P1, [300, 200])
         texto_P2 = fonte.render(f"Jogador 2: {pontos_jogador_P2}", True, ORANGE)
-        window.blit(texto_P2, [(800), (800)])
+        window.blit(texto_P2, [(1400), (800)])
 
         rastro_list_P1 = update_rastro(posicao_atual_P1, rastro_list_P1)
         rastro_list_P2 = update_rastro(posicao_atual_P2, rastro_list_P2)
