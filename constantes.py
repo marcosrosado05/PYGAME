@@ -39,27 +39,16 @@ posicao_inicial_x_P1 = 560
 posicao_inicial_y_P1 = 200
 posicao_inicial_x_P2 = 1330  
 posicao_inicial_y_P2 = 900 
-posicao_inicial_P1= [posicao_inicial_x_P1, posicao_inicial_y_P1]
-posicao_inicial_P2= [posicao_inicial_x_P2, posicao_inicial_y_P2]
+posicao_inicial_P1 = [posicao_inicial_x_P1, posicao_inicial_y_P1]
+posicao_inicial_P2 = [posicao_inicial_x_P2, posicao_inicial_y_P2]
 
-velocidade_motos= 5
-
-pontos_jogador_P1 = 0
-pontos_jogador_P2 = 0
-
-direcao_P1= (0, velocidade_motos)
-direcao_P2= (0, -velocidade_motos)
-
-posicao_atual_P1 = [posicao_inicial_x_P1, posicao_inicial_y_P1]
-posicao_atual_P2 = [posicao_inicial_x_P2, posicao_inicial_y_P2]
+velocidade_motos = 5
 
 rastro_skin_P1 = pygame.Surface((RASTRO_WIDTH, RASTRO_HEIGHT))
 rastro_skin_P1.fill(BLUE)
-rastro_list_P1 = []
 
 rastro_skin_P2 = pygame.Surface((RASTRO_WIDTH, RASTRO_HEIGHT))
 rastro_skin_P2.fill(ORANGE)
-rastro_list_P2 = []
 
 # Variáveis do Timer e Scoreboard
 tempo_inicial = pygame.time.get_ticks()
