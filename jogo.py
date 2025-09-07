@@ -38,14 +38,13 @@ while state["estado"]:
                         pygame.mixer.music.load("sons/Daft Punk - Derezzed (Lunar Lightcycle Remix).mp3")
                         pygame.mixer.music.set_volume(0.5)
                         pygame.mixer.music.play(-4)
-                        
+
         #EVENTOS TELA DE PLAY          
         elif tela.nome == "tela_play":
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:   # .key todo evento tem uma chave (key) e essa chave é uma série de números da biblio do pygame, cada tecla é um número distinto 
                     tela = TelaInicial()
 
-                
         #EVENTOS DA TELA DOS VENCEDORES
         if tela.nome == "tela_vencedor_p1":
             if event.type == pygame.KEYDOWN:

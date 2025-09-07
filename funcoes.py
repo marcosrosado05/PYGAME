@@ -40,52 +40,6 @@ moto_P2=  assets['Moto_P2']
 moto_P2 = pygame.transform.scale(moto_P2, (MOTO_WIDTH, MOTO_HEIGHT))
 moto_P2_rect= moto_P2.get_rect(center=(posicao_inicial_x_P2, posicao_inicial_y_P2))
 
-def update_state(state, tela):
-    
-    #TRATAMENTO DE EVENTOS
-    for event in pygame.event.get():
-
-        if event.type == pygame.QUIT:
-            state['estado'] = False #QUEBRA O LOOP DO JOGO
-            return
-        
-        # extraido dos ifs, pois sempre queremos testar esse caso
-        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-            state['estado'] = False #QUEBRA O LOOP DO JOGO
-            return
-        
-        #EVENTOS DA TELA INICIAL
-        if tela.nome == "tela_inicial":
-            if event.type == pygame.KEYDOWN:
-                
-                if event.key == pygame.K_SPACE:
-                    tela = TelaPlay()
-                    if state["estado"] == True:
-                        pygame.mixer.music.load("sons/Daft Punk - Derezzed (Lunar Lightcycle Remix).mp3")
-                        pygame.mixer.music.set_volume(0.5)
-                        pygame.mixer.music.play(-4)
-                        
-        #EVENTOS TELA DE PLAY          
-        elif tela.nome == "tela_play":
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:   # .key todo evento tem uma chave (key) e essa chave é uma série de números da biblio do pygame, cada tecla é um número distinto 
-                    tela = TelaInicial()
-
-                
-        #EVENTOS DA TELA DOS VENCEDORES
-        if tela.nome == "tela_vencedor_p1":
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:
-                    tela = TelaInicial()
-                    return
-        if tela.nome == "tela_vencedor_p2":
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:
-                    tela = TelaInicial()
-                    return
-                
-    return True #MANTÉM O LOOP DO JOGO
-
     
 def desenha_p1(window,assets, posicao_inicial_x_p1, posicao_inicial_y_p1, moto_atual_P1):
     
