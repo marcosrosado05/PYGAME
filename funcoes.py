@@ -26,10 +26,9 @@ def inicializa():
     print('*' * len(assets['titulo']))
     print('Utilize as teclas "W", "A", "S", "D" e "↑", "←", "→", "↓" PARA MOVER OS PERSONAGENS.')
 
-    if state == {'tela_atual': TELA_INICIAL, 'estado': True}:
-        pygame.mixer.music.load("sons/Encom Part II.mp3")
-        pygame.mixer.music.set_volume(2)
-        pygame.mixer.music.play(-1)
+    pygame.mixer.music.load("sons/Encom Part II.mp3")
+    pygame.mixer.music.set_volume(2)
+    pygame.mixer.music.play(-1)
 
     return window, state, assets
 
