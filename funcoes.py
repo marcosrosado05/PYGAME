@@ -1,6 +1,6 @@
 import pygame
 from constantes import *
-
+from tela import *
 
 
 # INICIA O JOGO
@@ -16,7 +16,7 @@ def inicializa():
     pygame.display.set_caption("TRON LEGACY")
 
     #DICIONARIO DE STATE DO JOGO
-    state = {'tela_atual': TELA_INICIAL, 'estado': True}
+    state = {'estado': True}
 
     # dicionario com todos os itens assets
 
@@ -39,86 +39,54 @@ moto_P1_rect= moto_P1.get_rect(center=(posicao_inicial_x_P1, posicao_inicial_y_P
 moto_P2=  assets['Moto_P2']
 moto_P2 = pygame.transform.scale(moto_P2, (MOTO_WIDTH, MOTO_HEIGHT))
 moto_P2_rect= moto_P2.get_rect(center=(posicao_inicial_x_P2, posicao_inicial_y_P2))
-def update_state(state):
 
+def update_state(state, tela):
+    
     #TRATAMENTO DE EVENTOS
     for event in pygame.event.get():
+
         if event.type == pygame.QUIT:
             state['estado'] = False #QUEBRA O LOOP DO JOGO
             return
         
+        # extraido dos ifs, pois sempre queremos testar esse caso
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            state['estado'] = False #QUEBRA O LOOP DO JOGO
+            return
+        
         #EVENTOS DA TELA INICIAL
-        if state['tela_atual'] == TELA_INICIAL:
+        if tela.nome == "tela_inicial":
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    state['estado'] = False #QUEBRA O LOOP DO JOGO
-                    return
                 
                 if event.key == pygame.K_SPACE:
-                    state['tela_atual'] = TELA_DE_PLAY
+                    tela = TelaPlay()
                     if state["estado"] == True:
                         pygame.mixer.music.load("sons/Daft Punk - Derezzed (Lunar Lightcycle Remix).mp3")
                         pygame.mixer.music.set_volume(0.5)
                         pygame.mixer.music.play(-4)
+                        
         #EVENTOS TELA DE PLAY          
-        elif state['tela_atual'] == TELA_DE_PLAY:
+        elif tela.nome == "tela_play":
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:   # .key todo evento tem uma chave (key) e essa chave é uma série de números da biblio do pygame, cada tecla é um número distinto 
-                    state['tela_atual'] = TELA_INICIAL
-                if event.key == pygame.K_ESCAPE:
-                    state['estado'] = False #QUEBRA O LOOP DO JOGO
-                    return
+                    tela = TelaInicial()
+
                 
         #EVENTOS DA TELA DOS VENCEDORES
-        if state['tela_atual'] == TELA_VENCEDOR_P1:
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    state['estado'] = False #QUEBRA O LOOP DO JOGO
-                    return
+        if tela.nome == "tela_vencedor_p1":
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
-                    state['tela_atual'] = TELA_INICIAL
+                    tela = TelaInicial()
                     return
-        if state['tela_atual'] == TELA_VENCEDOR_P2:
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    state['estado'] = False #QUEBRA O LOOP DO JOGO
-                    return
+        if tela.nome == "tela_vencedor_p2":
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
-                    state['tela_atual'] = TELA_INICIAL
+                    tela = TelaInicial()
                     return
                 
     return True #MANTÉM O LOOP DO JOGO
 
-def desenha(window, state, assets):
-
-    #DESENHANDO TELA INICIAL
-    if state['tela_atual'] == TELA_INICIAL:
-        window.fill(BLACK)
-        tela_incial_escala = pygame.transform.scale(assets['tela_de_play'], (WIDTH_TAB, HEIGHT_TAB))
-        window.blit(tela_incial_escala, (WIDTH/2 - WIDTH_TAB/2,106))
-
-    #DESENHANDO TELA DE PLAY
-    if state['tela_atual'] == TELA_DE_PLAY:
-        window.fill(BLACK)
-        window.blit(assets['tabuleiro1'], (WIDTH / 2 - assets['tabuleiro1'].get_width() / 2, HEIGHT / 2 - assets['tabuleiro1'].get_height() / 2))
-
-    #DESENHANDO TELA DO VENCEDOR 1
-    if state['tela_atual'] == TELA_VENCEDOR_P1:
-        window.fill(BLACK)
-        vencedor_p1 = pygame.transform.scale(assets['P1_vencedor'], (WIDTH_TAB, HEIGHT_TAB))
-        window.blit(vencedor_p1, (WIDTH/2 - WIDTH_TAB/2,100))
-        #WIDTH/2- assets['P1_vencedor'].get_width()/2
-
-    #DESENHANDO TELA DO VENCEDOR 2
-    if state['tela_atual'] == TELA_VENCEDOR_P2:
-        window.fill(BLACK)
-        vencedor_p2 = pygame.transform.scale(assets['P2_vencedor'], (WIDTH_TAB, HEIGHT_TAB))
-        window.blit(vencedor_p2, (WIDTH/2 - WIDTH_TAB/2,100))
-
     
-
 def desenha_p1(window,assets, posicao_inicial_x_p1, posicao_inicial_y_p1, moto_atual_P1):
     
     moto_P1= assets['Moto_P1']

@@ -2,20 +2,63 @@ import pygame
 from constantes import *
 from funcoes import *
 
+from tela import *
+
 
 window, state, assets = inicializa()
 moto_P1_baixo = pygame.transform.rotate(moto_P1, 90)
 moto_P2_cima = pygame.transform.rotate(moto_P2, -90)
 
 clock = pygame.time.Clock()
+tela = TelaInicial()
 
 while state["estado"]:
-    desenha(window, state, assets)
-    update_state(state)
+    tela.desenha_tela(window, assets)
+    # tela = update_state(state, tela)
+
+     #TRATAMENTO DE EVENTOS
+    for event in pygame.event.get():
+
+        if event.type == pygame.QUIT:
+            state['estado'] = False #QUEBRA O LOOP DO JOGO
+            break
+        
+        # extraido dos ifs, pois sempre queremos testar esse caso
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            state['estado'] = False #QUEBRA O LOOP DO JOGO
+            break
+        
+        #EVENTOS DA TELA INICIAL
+        if tela.nome == "tela_inicial":
+            if event.type == pygame.KEYDOWN:
+        
+                if event.key == pygame.K_SPACE:
+                    tela = TelaPlay()
+                    if state["estado"] == True:
+                        pygame.mixer.music.load("sons/Daft Punk - Derezzed (Lunar Lightcycle Remix).mp3")
+                        pygame.mixer.music.set_volume(0.5)
+                        pygame.mixer.music.play(-4)
+                        
+        #EVENTOS TELA DE PLAY          
+        elif tela.nome == "tela_play":
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:   # .key todo evento tem uma chave (key) e essa chave é uma série de números da biblio do pygame, cada tecla é um número distinto 
+                    tela = TelaInicial()
+
+                
+        #EVENTOS DA TELA DOS VENCEDORES
+        if tela.nome == "tela_vencedor_p1":
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    tela = TelaInicial()
+        if tela.nome == "tela_vencedor_p2":
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    tela = TelaInicial()
 
     clock.tick(FPS)
 
-    if state['tela_atual'] == TELA_DE_PLAY:
+    if tela.jogo_em_andamento:
 
         fonte = pygame.font.Font(None, 48)
         texto_P1 = fonte.render(f"Jogador 1: {pontos_jogador_P1}", True, BLUE)
@@ -107,12 +150,12 @@ while state["estado"]:
         
         # Altera para a tela de vencedor apenas se um jogador atingir 2 pontos
         if pontos_jogador_P1 == 2:
-            state['tela_atual'] = TELA_VENCEDOR_P1
+            tela = TelaVencedorP1()
             pontos_jogador_P1=0
             pontos_jogador_P2=0
             pygame.display.update()
         elif pontos_jogador_P2 == 2:
-            state['tela_atual'] = TELA_VENCEDOR_P2
+            tela = TelaVencedorP2()
             pontos_jogador_P1=0
             pontos_jogador_P2=0
             pygame.display.update()
