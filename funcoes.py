@@ -223,14 +223,4 @@ def colisao_rastro_P2(rastro_list, moto_rect, pontos_jogador_P2):
             return True
     return False
 
-def reset_game(rastro_list_P1, rastro_list_P2, state):
-    global posicao_atual_P1, posicao_atual_P2, direcao_P1, direcao_P2
-    posicao_atual_P1 = [posicao_inicial_x_P1, posicao_inicial_y_P1]
-    posicao_atual_P2 = [posicao_inicial_x_P2, posicao_inicial_y_P2]
-    direcao_P1 = (0, velocidade_motos)
-    direcao_P2 = (0, -velocidade_motos)
-    rastro_list_P1.clear()
-    rastro_list_P2.clear()
-    state['tela_atual'] = TELA_DE_PLAY
-
 pygame.quit()
